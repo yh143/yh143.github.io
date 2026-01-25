@@ -1,1 +1,55 @@
-这里什么都没有。。。
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xilixili</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入一个开源图标库（可选，用于播放按钮等图标） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-video"></i> Xilixili视频</h1>
+            <p>从下方列表中选择一个视频开始播放</p>
+        </header>
+
+        <main>
+            <!-- 视频播放器区域 -->
+            <div class="player-section">
+                <video id="mainVideoPlayer" controls poster="./videos/poster.jpg">
+                    您的浏览器不支持 HTML5 视频标签。
+                </video>
+                <div class="player-info">
+                    <h2 id="videoTitle">请选择视频</h2>
+                    <p id="videoDescription">播放器准备就绪。</p>
+                </div>
+            </div>
+
+            <!-- 视频列表区域 -->
+            <div class="playlist-section">
+                <h3><i class="fas fa-list"></i> 视频列表</h3>
+                <ul id="videoPlaylist">
+                    <!-- 视频列表将通过JavaScript动态生成 -->
+                    <li class="placeholder">正在加载视频列表...</li>
+                </ul>
+                <div class="hint">
+                    <p><i class="fas fa-info-circle"></i> 提示：视频文件托管在 GitHub 上，首次加载或网速较慢时可能需要缓冲片刻。</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>由 GitHub Pages 强力驱动 | 最后更新于 <span id="currentYear"></span></p>
+        </footer>
+    </div>
+
+    <!-- 引入我们自己的JavaScript文件 -->
+    <script src="script.js"></script>
+    <!-- 动态更新年份 -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
