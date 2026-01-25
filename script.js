@@ -5,7 +5,8 @@
 // desc: 视频描述
 // duration: 视频时长
 const videoList = [
-    { name: "It's Mario Time!", file: "ｆｉｒｓｔ.mp4", desc: "尝尝SM64是什么味道的awa", duration: "0:5" },
+    { name: "It's Mario Time!", file: "ｆｉｒｓｔ.mp4", desc: "尝尝SM64是什么味道的awa(发布者：SMGYH)", duration: "0:5" },
+    { name: "小天才的恶行", file: "小天才的恶行.mp4", desc: "小天才的恶行(发布者：SMGYH)", duration: "1:36"},
     
 ];
 
