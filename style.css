@@ -257,8 +257,108 @@ footer {
 #videoSubmitForm button:hover {
     transform: scale(1.02);
 }
+/* ===== 投稿表单样式 ===== */
+.submit-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+}
+.submit-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ddd;
+}
+.submit-section h3 i {
+    color: #2ecc71;
+    margin-right: 10px;
+}
+.submit-section p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+#videoSubmitForm input, #videoSubmitForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+#videoSubmitForm input:focus, #videoSubmitForm textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+#videoSubmitForm textarea {
+    height: 100px;
+    resize: vertical;
+    font-family: inherit;
+}
+#videoSubmitForm button {
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+#videoSubmitForm button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 150, 250, 0.2);
+}
+#videoSubmitForm button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+}
 #formMessage {
     margin-top: 15px;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+}
+.message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block !important;
+}
+.message-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block !important;
+}
+.message-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    display: block !important;
+}
+.form-footer-note {
+    font-size: 0.8rem;
+    color: #95a5a6;
+    margin-top: 15px;
+}
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .submit-section {
+        padding: 20px;
+    }
+    #videoSubmitForm button {
+        padding: 12px;
+    }
 }
