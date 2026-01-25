@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xilixili</title>
+    <title>XiliXili | 支持投稿</title>
     <link rel="stylesheet" href="style.css">
-    <!-- 引入一个开源图标库（可选，用于播放按钮等图标） -->
+    <!-- 引入字体图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-video"></i> Xilixili视频</h1>
-            <p>从下方列表中选择一个视频开始播放</p>
+            <h1><i class="fas fa-video"></i> 西里西里</h1>
+            <p>观看精选视频 | 分享你的发现</p>
         </header>
 
         <main>
             <!-- 视频播放器区域 -->
             <div class="player-section">
-                <video id="mainVideoPlayer" controls poster="./videos/poster.jpg">
+                <video id="mainVideoPlayer" controls poster="./videos/poster.jpg" preload="metadata">
                     您的浏览器不支持 HTML5 视频标签。
                 </video>
                 <div class="player-info">
                     <h2 id="videoTitle">请选择视频</h2>
-                    <p id="videoDescription">播放器准备就绪。</p>
+                    <p id="videoDescription">从右侧列表中选择一个视频开始播放。</p>
                 </div>
             </div>
 
@@ -35,19 +35,51 @@
                     <li class="placeholder">正在加载视频列表...</li>
                 </ul>
                 <div class="hint">
-                    <p><i class="fas fa-info-circle"></i> 提示：视频文件托管在 GitHub 上，首次加载或网速较慢时可能需要缓冲片刻。</p>
+                    <p><i class="fas fa-info-circle"></i> 提示：所有视频托管于GitHub，首次加载可能需要缓冲。</p>
                 </div>
+            </div>
+
+            <!-- ===== 新增：视频投稿区域 ===== -->
+            <div class="submit-section">
+                <h3><i class="fas fa-cloud-upload-alt"></i> 投稿视频链接</h3>
+                <p>发现了一个有趣的视频？在这里分享链接，审核后会加入列表！</p>
+                
+                <form id="videoSubmitForm">
+                    <input type="url" 
+                           id="videoUrl" 
+                           placeholder="请输入视频直链 (必须为 https:// 开头)" 
+                           required
+                           pattern="https://.*">
+                    
+                    <input type="text" 
+                           id="submitterName" 
+                           placeholder="你的称呼或昵称 (可选)">
+                    
+                    <textarea id="videoDescriptionForm" 
+                              placeholder="视频描述或推荐理由 (可选)"></textarea>
+                    
+                    <button type="submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> 提交链接
+                    </button>
+                    
+                    <div id="formMessage"></div>
+                    
+                    <p class="form-footer-note">
+                        <i class="fas fa-shield-alt"></i> 提交即表示你同意链接被收录和展示。我们将在审核后处理。
+                    </p>
+                </form>
             </div>
         </main>
 
         <footer>
-            <p>由 GitHub Pages 强力驱动 | 最后更新于 <span id="currentYear"></span></p>
+            <p>由 GitHub Pages 驱动 | 最后更新于 <span id="currentYear"></span></p>
         </footer>
     </div>
 
-    <!-- 引入我们自己的JavaScript文件 -->
+    <!-- 引入外部JavaScript文件 -->
     <script src="script.js"></script>
-    <!-- 动态更新年份 -->
+    
+    <!-- 初始化当前年份 -->
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
