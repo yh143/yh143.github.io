@@ -97,3 +97,67 @@ videoPlayer.addEventListener('ended', function() {
     // playVideo(nextIndex);
     console.log('当前视频播放完毕。你可以点击列表中的下一个视频继续。');
 });
+// === 配置区域 ===
+// 请修改为你的信息！
+const GITHUB_USERNAME = 'yh143'; // 例如：octocat
+const GITHUB_REPO = 'yh143.github.io';     // 例如：my-video-site
+const GITHUB_TOKEN = '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';
+// === 配置结束 ===
+
+// 获取表单元素
+const videoSubmitForm = document.getElementById('videoSubmitForm');
+const formMessage = document.getElementById('formMessage');
+
+// 表单提交处理
+videoSubmitForm.addEventListener('submit', async function(event) {
+    event.preventDefault(); // 阻止表单默认刷新行为
+
+    const url = document.getElementById('videoUrl').value;
+    const name = document.getElementById('submitterName').value || '匿名用户';
+    const desc = document.getElementById('videoDescription').value || '无描述';
+
+    // 禁用按钮，防止重复提交
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = '提交中...';
+    formMessage.textContent = '';
+    formMessage.style.color = '#3498db';
+
+    // 准备提交的数据
+    const issueTitle = `新视频投稿：${name}`;
+    const issueBody = `**视频链接：**\n${url}\n\n**投稿人：**\n${name}\n\n**描述：**\n${desc}\n\n---\n*此条目由网站表单自动创建*`;
+
+    try {
+        // 调用GitHub API创建Issue
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/issues`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: issueTitle,
+                body: issueBody
+            })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            formMessage.textContent = '✅ 投稿成功！感谢分享。';
+            formMessage.style.color = '#2ecc71';
+            videoSubmitForm.reset(); // 清空表单
+            // 可选：在控制台输出新Issue的链接，方便你查看
+            console.log(`投稿已创建: ${data.html_url}`);
+        } else {
+            throw new Error(`GitHub API 返回错误: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('提交失败:', error);
+        formMessage.textContent = '❌ 提交失败，请稍后重试或检查控制台。';
+        formMessage.style.color = '#e74c3c';
+    } finally {
+        // 重新启用按钮
+        submitBtn.disabled = false;
+        submitBtn.textContent = '提交链接';
+    }
+});
