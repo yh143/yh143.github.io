@@ -97,67 +97,137 @@ videoPlayer.addEventListener('ended', function() {
     // playVideo(nextIndex);
     console.log('当前视频播放完毕。你可以点击列表中的下一个视频继续。');
 });
+// ===== 视频投稿功能 =====
+// 注意：这里将textarea的id改为videoDescriptionForm，避免与播放器描述冲突
+
 // === 配置区域 ===
-// 请修改为你的信息！
-const GITHUB_USERNAME = 'yh143'; // 例如：octocat
-const GITHUB_REPO = 'yh143.github.io';     // 例如：my-video-site
-const GITHUB_TOKEN = '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';
+// 使用前必须修改以下三个变量！
+const GITHUB_USERNAME = 'yh143'; 
+const GITHUB_REPO = 'yh143.github.io';  
+const GITHUB_TOKEN = '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'; 
 // === 配置结束 ===
 
-// 获取表单元素
-const videoSubmitForm = document.getElementById('videoSubmitForm');
-const formMessage = document.getElementById('formMessage');
-
-// 表单提交处理
-videoSubmitForm.addEventListener('submit', async function(event) {
-    event.preventDefault(); // 阻止表单默认刷新行为
-
-    const url = document.getElementById('videoUrl').value;
-    const name = document.getElementById('submitterName').value || '匿名用户';
-    const desc = document.getElementById('videoDescription').value || '无描述';
-
-    // 禁用按钮，防止重复提交
+// 初始化投稿表单功能
+function initSubmissionForm() {
+    const videoSubmitForm = document.getElementById('videoSubmitForm');
+    const formMessage = document.getElementById('formMessage');
     const submitBtn = document.getElementById('submitBtn');
-    submitBtn.disabled = true;
-    submitBtn.textContent = '提交中...';
-    formMessage.textContent = '';
-    formMessage.style.color = '#3498db';
-
-    // 准备提交的数据
-    const issueTitle = `新视频投稿：${name}`;
-    const issueBody = `**视频链接：**\n${url}\n\n**投稿人：**\n${name}\n\n**描述：**\n${desc}\n\n---\n*此条目由网站表单自动创建*`;
-
-    try {
-        // 调用GitHub API创建Issue
-        const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/issues`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `token ${GITHUB_TOKEN}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title: issueTitle,
-                body: issueBody
-            })
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            formMessage.textContent = '✅ 投稿成功！感谢分享。';
-            formMessage.style.color = '#2ecc71';
-            videoSubmitForm.reset(); // 清空表单
-            // 可选：在控制台输出新Issue的链接，方便你查看
-            console.log(`投稿已创建: ${data.html_url}`);
-        } else {
-            throw new Error(`GitHub API 返回错误: ${response.status}`);
+    
+    if (!videoSubmitForm) return; // 如果没有表单元素，则退出
+    
+    // 显示消息函数
+    function showMessage(text, type = 'info') {
+        formMessage.textContent = text;
+        formMessage.className = `message-${type}`;
+        
+        // 自动隐藏成功消息
+        if (type === 'success') {
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
         }
-    } catch (error) {
-        console.error('提交失败:', error);
-        formMessage.textContent = '❌ 提交失败，请稍后重试或检查控制台。';
-        formMessage.style.color = '#e74c3c';
-    } finally {
-        // 重新启用按钮
-        submitBtn.disabled = false;
-        submitBtn.textContent = '提交链接';
     }
+    
+    // 验证URL格式
+    function isValidUrl(url) {
+        try {
+            const urlObj = new URL(url);
+            return urlObj.protocol === 'https:';
+        } catch {
+            return false;
+        }
+    }
+    
+    // 处理表单提交
+    videoSubmitForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        // 获取表单数据
+        const url = document.getElementById('videoUrl').value.trim();
+        const name = document.getElementById('submitterName').value.trim() || '匿名用户';
+        const desc = document.getElementById('videoDescriptionForm').value.trim() || '无描述';
+        
+        // 验证URL
+        if (!isValidUrl(url)) {
+            showMessage('❌ 请输入有效的HTTPS视频链接！', 'error');
+            document.getElementById('videoUrl').focus();
+            return;
+        }
+        
+        // 更新按钮状态
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
+        showMessage('正在提交到GitHub，请稍候...', 'info');
+        
+        // 准备Issue数据
+        const issueTitle = `[视频投稿] 来自 ${name}`;
+        const issueBody = `## 视频链接\n${url}\n\n## 投稿人\n${name}\n\n## 描述\n${desc}\n\n---\n*提交时间：${new Date().toLocaleString()}*`;
+        
+        try {
+            // 调用GitHub API创建Issue
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/issues`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: issueTitle,
+                    body: issueBody,
+                    labels: ['video-submission']
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('投稿成功，Issue链接:', data.html_url);
+                
+                // 显示成功消息
+                showMessage('✅ 投稿成功！我们已收到你的推荐。感谢分享！', 'success');
+                
+                // 清空表单
+                videoSubmitForm.reset();
+            } else {
+                const errorData = await response.json();
+                throw new Error(errorData.message || `HTTP ${response.status}`);
+            }
+        } catch (error) {
+            console.error('提交失败:', error);
+            let errorMsg = '提交失败，请稍后重试。';
+            
+            if (error.message.includes('401')) {
+                errorMsg = '认证失败，请检查Token配置。';
+            } else if (error.message.includes('404')) {
+                errorMsg = '仓库未找到，请检查用户名和仓库名。';
+            } else if (error.message.includes('network')) {
+                errorMsg = '网络错误，请检查连接后重试。';
+            }
+            
+            showMessage(`❌ ${errorMsg}`, 'error');
+        } finally {
+            // 恢复按钮状态
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 提交链接';
+        }
+    });
+    
+    // 实时URL验证
+    document.getElementById('videoUrl').addEventListener('input', function() {
+        const url = this.value.trim();
+        if (url && !isValidUrl(url)) {
+            this.style.borderColor = '#e74c3c';
+        } else {
+            this.style.borderColor = '#ddd';
+        }
+    });
+}
+
+// 页面加载完成后初始化投稿表单
+document.addEventListener('DOMContentLoaded', function() {
+    // 你的现有初始化代码...
+    initializePlaylist(); // 假设这是你原有的初始化函数
+    
+    // 新增：初始化投稿表单
+    initSubmissionForm();
 });
