@@ -100,7 +100,7 @@ videoPlayer.addEventListener('ended', function() {
 // 使用前必须修改以下三个变量！
 const GITHUB_USERNAME = 'yh143'; 
 const GITHUB_REPO = 'yh143.github.io';  
-const GITHUB_TOKEN = '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'; 
+const GITHUB_TOKEN = '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'; 
 // === 配置结束 ===
 
 // 初始化投稿表单功能
