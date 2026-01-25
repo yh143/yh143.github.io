@@ -4,7 +4,7 @@
 // file: 视频文件名（必须位于videos/文件夹内）
 // desc: 视频描述（可选）
 const videoList = [
-    { name: "SM64小视频", file: "ｆｉｒｓｔ.wmv", desc: "SM64", duration: "0:23" },
+    { name: "SM64小视频", file: "ｆｉｒｓｔ.mp4", desc: "SM64", duration: "0:23" },
     { name: "编程教学：JavaScript 基础", file: "js-tutorial.mp4", desc: "学习JavaScript变量和函数", duration: "12:45" },
     { name: "吉他弹奏：经典歌曲", file: "guitar-cover.mp4", desc: "翻弹经典英文歌曲", duration: "3:56" },
     { name: "快速早餐食谱", file: "breakfast-recipe.mp4", desc: "十分钟完成的健康早餐", duration: "7:12" },
