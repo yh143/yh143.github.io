@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XiliXili | 支持投稿</title>
+    <title>西里西里|For students</title>
+    <!-- 引入外部CSS文件 -->
     <link rel="stylesheet" href="style.css">
     <!-- 引入字体图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,7 +12,7 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-video"></i> 西里西里</h1>
+            <h1><i class="fas fa-video"></i> XiliXili</h1>
             <p>观看精选视频 | 分享你的发现</p>
         </header>
 
@@ -39,49 +40,39 @@
                 </div>
             </div>
 
-            <!-- ===== 新增：视频投稿区域 ===== -->
+            <!-- ===== 新版：GitHub Issues 投稿区域 ===== -->
             <div class="submit-section">
                 <h3><i class="fas fa-cloud-upload-alt"></i> 投稿视频链接</h3>
-                <p>发现了一个有趣的视频？在这里分享链接，审核后会加入列表！</p>
+                <p>发现了一个有趣的视频？点击下方按钮，在 GitHub 上提交链接，审核后会加入列表！</p>
                 
-                <form id="videoSubmitForm">
-                    <input type="url" 
-                           id="videoUrl" 
-                           placeholder="请输入视频直链 (必须为 https:// 开头)" 
-                           required
-                           pattern="https://.*">
-                    
-                    <input type="text" 
-                           id="submitterName" 
-                           placeholder="你的称呼或昵称 (可选)">
-                    
-                    <textarea id="videoDescriptionForm" 
-                              placeholder="视频描述或推荐理由 (可选)"></textarea>
-                    
-                    <button type="submit" id="submitBtn">
-                        <i class="fas fa-paper-plane"></i> 提交链接
-                    </button>
-                    
-                    <div id="formMessage"></div>
-                    
-                    <p class="form-footer-note">
-                        <i class="fas fa-shield-alt"></i> 提交即表示你同意链接被收录和展示。我们将在审核后处理。
-                    </p>
-                </form>
+                <!-- 核心：跳转到 GitHub Issues 页面的链接 -->
+                <a href="https://github.com/yh143/yh143.github.io/issues/new?template=video-submission.md&title=[投稿] 新视频链接"
+                   target="_blank"
+                   class="github-submit-btn">
+                    <i class="fab fa-github"></i> 前往 GitHub 提交链接
+                </a>
+                
+                <div class="steps-guide">
+                    <h4><i class="fas fa-info-circle"></i> 如何提交？</h4>
+                    <ol>
+                        <li>点击上方按钮，会打开 GitHub 的 Issue 创建页面（可能需要登录）。</li>
+                        <li>页面已预填了投稿格式，请在相应位置填写视频链接和描述。</li>
+                        <li>填写完毕后，点击页面底部的 <strong>「Submit new issue」</strong> 按钮即可。</li>
+                    </ol>
+                </div>
+                
+                <p class="form-footer-note">
+                    <i class="fas fa-shield-alt"></i> 此方式安全可靠，你的投稿将直接存储于本仓库的 <a href="https://github.com/yh143/yh143.github.io/issues" target="_blank">Issues 列表</a> 中。
+                </p>
             </div>
         </main>
 
         <footer>
-            <p>由 GitHub Pages 驱动 | 最后更新于 <span id="currentYear"></span></p>
+            <p>由 GitHub Pages 驱动 | 最后更新于 <span id="currentYear"></span> | <a href="https://github.com/yh143/yh143.github.io/issues" target="_blank">查看所有投稿</a></p>
         </footer>
     </div>
 
     <!-- 引入外部JavaScript文件 -->
     <script src="script.js"></script>
-    
-    <!-- 初始化当前年份 -->
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
