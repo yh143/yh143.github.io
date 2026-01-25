@@ -7,7 +7,8 @@
 const videoList = [
     { name: "It's Mario Time!", file: "ｆｉｒｓｔ.mp4", desc: "尝尝SM64是什么味道的awa(发布者：SMGYH)", duration: "0:5" },
     { name: "小天才的恶行", file: "小天才的恶行.mp4", desc: "小天才的恶行(发布者：SMGYH)", duration: "1:36"},
-    
+    { name: "兽圈视频/游戏/小说宝藏合集🦊FurUp内容推荐模块", file: "兽圈视频游戏小说宝藏合集furup内容推荐模块.mp4", desc: "兽圈视频/游戏/小说宝藏合集🦊FurUp内容推荐模块(发布者：SMGYH)", duration: "2:36"},
+    { name: "搞笑野猪佩奇", file: "34907885429-1-192.mp4", desc: "搞笑野猪佩奇1，但是鱿鱼游戏(发布者：SMGYH)", duration: "1：06" }
 ];
 
 // ===== DOM元素引用 =====
