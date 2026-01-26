@@ -8,7 +8,7 @@ const videoList = [
     { name: "It's Mario Time!", file: "first.mp4", desc: "尝尝SM64是什么味道的awa(发布者：SMGYH)", duration: "0:05" },
     { name: "小天才的恶行", file: "小天才的恶行.mp4", desc: "小天才的恶行(发布者：SMGYH)", duration: "1:36"},
     // 注意！以下两个视频文件名必须不同！
-    { name: "兽圈宝藏合集", file: "兽圈视频游戏小说宝藏合集furup内容推荐模块.mp4", desc: "兽圈视频/游戏/小说宝藏合集🦊FurUp内容推荐模块(发布者：SMGYH)", duration: "2:36"},
+    { name: "兽圈宝藏合集", file: "兽圈视频游戏小说宝藏合集furup内容推荐模块.mp4", desc: "兽圈视频/游戏/小说宝藏合集🦊FurUp内容推荐模块(发布者：SMGYH)", duration: "2:03"},
     { name: "【节奏医生】自制关卡", file: "34907885429-1-192.mp4", desc: "【节奏医生】没有网好卡菌的结局，但是你没有奇迹除颤器…… | 自制关卡小剧场：7-Xif 生命线(Lifeline)(发布者：SMGYH)", duration: "7:06"},
     // 这个文件不能和上一个相同，假设你实际文件是另一个
     { name: "少年不知苹果好，错把小天才当成宝", file: "35055993973-1-192.mp4", desc: "少年  不  知  苹果好，  错  把小天才  当成  宝(发布者：SMGYH)", duration: "1:53"},
