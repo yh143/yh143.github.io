@@ -13,7 +13,7 @@ const videoList = [
     // 这个文件不能和上一个相同，假设你实际文件是另一个
     { name: "少年不知苹果好，错把小天才当成宝", file: "35055993973-1-192.mp4", desc: "少年  不  知  苹果好，  错  把小天才  当成  宝(发布者：SMGYH)", duration: "1:53"},
     { name: "搞笑野猪佩奇", file: "34907885429-1-192.mp4", desc: "搞笑野猪佩奇1，但是鱿鱼游戏(发布者：SMGYH)", duration: "1:03"}, // 注意冒号为英文
-    { name: "为了实现全版本动态模糊 我黑入了这个游戏..", file: "faxif.mp4", desc: "为了实现全版本动态模糊 我黑入了这个游戏..\n仓库地址：Github: github.com/QCMaxcer/InfiniteGUI-Minecraft-DLL(发布者：SMGYH)", duration: "3:39" },
+    { name: "你敢保证这是成龙配的音？", file: "你敢保证这是成龙配的音？.mp4", desc: "你敢保证这是成龙配的音？(发布者：SMGYH)", duration: "3:23" },
 ];
 
 // ===== DOM元素引用 =====
