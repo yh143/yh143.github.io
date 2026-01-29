@@ -747,3 +747,43 @@ footer a:hover {
         border: 1px solid #ddd !important;
     }
 }
+/* 下载区域样式 */
+.download-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 30px 0;
+    text-align: center;
+    border-left: 5px solid #2ecc71;
+}
+.download-section h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(to right, #27ae60, #2ecc71);
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 12px;
+    text-decoration: none;
+    margin: 20px 0;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+}
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 204, 113, 0.5);
+}
+.download-tip {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-top: 15px;
+}
+.download-footer {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    margin-top: 20px;
+}
