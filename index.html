@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>西里西里|For students</title>
+    <title>西里西里 | 新春红更新</title>
     <!-- 引入外部CSS文件 -->
     <link rel="stylesheet" href="style.css">
     <!-- 引入字体图标库 -->
@@ -12,9 +12,20 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-video"></i> XiliXili</h1>
-            <p>观看精选视频 | 分享你的发现</p>
+            <h1><i class="fas fa-video"></i> XiliXili · 新春大吉</h1>
+            <p>红红火火观影 | 分享你的新年!</p>
         </header>
+
+        <!-- ===== 新增：新年倒计时 ===== -->
+        <div class="newyear-countdown" id="newyearCountdown">
+            <div class="countdown-title"><i class="fas fa-redo-alt"></i> 距离春节还有</div>
+            <div class="countdown-timer">
+                <span id="countdownDays">00</span> 天
+                <span id="countdownHours">00</span> 时
+                <span id="countdownMinutes">00</span> 分
+                <span id="countdownSeconds">00</span> 秒
+            </div>
+        </div>
 
         <main>
             <!-- 视频播放器区域 -->
@@ -38,20 +49,20 @@
                     <p><i class="fas fa-info-circle"></i> 提示：所有视频托管于GitHub，首次加载可能需要缓冲。</p>
                 </div>
             </div>
-<div class="live-embed">
-    <h3><i class="fas fa-satellite-dish"></i> 正在直播</h3>
-    <p>小地球动画（推流bilibili直播）</p>
-    <!-- 替换为您提供的有效iframe代码 -->
-    <iframe style="width: 700px;height: 400px;"
-            src="https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=32339209&quality=0"
-            frameborder="no"
-            framespacing="0"
-            scrolling="no"
-            allow="autoplay; encrypted-media"
-            allowfullscreen="true">
-    </iframe>
-    <p class="live-tip">📡 提示：直播结束后播放器可能显示黑屏。</p>
-</div>
+            <div class="live-embed">
+                <h3><i class="fas fa-satellite-dish"></i> 正在直播</h3>
+                <p>小地球动画（推流bilibili直播）</p>
+                <!-- 替换为您提供的有效iframe代码 -->
+                <iframe style="width: 700px;height: 400px;"
+                        src="https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=32339209&quality=0"
+                        frameborder="no"
+                        framespacing="0"
+                        scrolling="no"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen="true">
+                </iframe>
+                <p class="live-tip">📡 提示：直播结束后播放器可能显示黑屏。</p>
+            </div>
             <!-- ===== 新版：GitHub Issues 投稿区域 ===== -->
             <div class="submit-section">
                 <h3><i class="fas fa-cloud-upload-alt"></i> 投稿视频链接</h3>
@@ -78,27 +89,26 @@
                 </p>
             </div>
         </main>
-<!-- ===== 新增：客户端下载区域 ===== -->
-<section class="download-section">
-    <h3><i class="fas fa-download"></i> 下载桌面客户端</h3>
-    <p>想要更沉浸、更稳定的观看体验？快来下载“西里西里”专属桌面客户端</p>
-    <a href="https://github.com/yh143/xilixili-player-APP/releases/download/Stable-for-Windows/XiliXili_Final.7z" class="download-btn" target="_blank">
-        <i class="fab fa-windows"></i> 下载 for Windows
-    </a>
-    <p class="download-tip">
-        <i class="fas fa-info-circle"></i> 若下载缓慢，可点击后选择“在浏览器中下载”。
-    </p>
-    <p class="download-footer">
-        更多平台？敬请期待！ | 
-        <a href="https://github.com/yh143/yh143.github.io/releases" target="_blank">查看所有历史版本</a>
-    </p>
-</section>
+        <!-- ===== 新增：客户端下载区域 ===== -->
+        <section class="download-section">
+            <h3><i class="fas fa-download"></i> 下载桌面客户端</h3>
+            <p>想要更沉浸、更稳定的观看体验？快来下载“西里西里”专属桌面客户端</p>
+            <a href="https://github.com/yh143/xilixili-player-APP/releases/download/Stable-for-Windows/XiliXili_Final.7z" class="download-btn" target="_blank">
+                <i class="fab fa-windows"></i> 下载 for Windows
+            </a>
+            <p class="download-tip">
+                <i class="fas fa-info-circle"></i> 若下载缓慢，可点击后选择“在浏览器中下载”。
+            </p>
+            <p class="download-footer">
+                更多平台？敬请期待！ | 
+                <a href="https://github.com/yh143/yh143.github.io/releases" target="_blank">查看所有历史版本</a>
+            </p>
+        </section>
         <footer>
             <p>由 GitHub Pages 驱动 | 最后更新于 <span id="currentYear"></span> | <a href="https://github.com/yh143/yh143.github.io/issues" target="_blank">查看所有投稿</a></p>
             <p>站主：夜桦YH    Copyright 2025~2026 Yocas Studio</p>
         </footer>
     </div>
-</div>
     <!-- 引入外部JavaScript文件 -->
     <script src="script.js"></script>
 </body>
