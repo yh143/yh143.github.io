@@ -1,17 +1,10 @@
 // ===== 视频列表配置 =====
-// 请根据你videos文件夹中的实际视频文件进行修改！
-// name: 视频显示名称
-// file: 视频文件名（必须位于videos/文件夹内）
-// desc: 视频描述
-// duration: 视频时长
 const videoList = [
     { name: "骐骥驰骋 势不可挡！2026年总台春晚主题、主标识发布!", file: "34631912179-1-192.mp4", desc: "春晚预告片(发布者：SMGYH)", duration: "0:05" },
     { name: "It's Mario Time!", file: "first.mp4", desc: "尝尝SM64是什么味道的awa(发布者：SMGYH)", duration: "0:05" },
     { name: "小天才的恶行", file: "小天才的恶行.mp4", desc: "小天才的恶行(发布者：SMGYH)", duration: "1:36"},
-    // 注意！以下两个视频文件名必须不同！
     { name: "兽圈宝藏合集", file: "兽圈视频游戏小说宝藏合集furup内容推荐模块.mp4", desc: "兽圈视频/游戏/小说宝藏合集🦊FurUp内容推荐模块(发布者：SMGYH)", duration: "2:03"},
     { name: "2分钟教你发低质视频，并爆火起号！", file: "35462709482-1-192.mp4", desc: "2分钟教你发低质视频，并爆火起号！(发布者：SMGYH)", duration: "2分钟"},
-    // 这个文件不能和上一个相同，假设你实际文件是另一个
     { name: "少年不知苹果好，错把小天才当成宝", file: "35055993973-1-192.mp4", desc: "少年  不  知  苹果好，  错  把小天才  当成  宝(发布者：SMGYH)", duration: "1:53"},
     { name: "搞笑野猪佩奇", file: "34907885429-1-192.mp4", desc: "搞笑野猪佩奇1，但是鱿鱼游戏(发布者：SMGYH)", duration: "1:03"}, 
     { name: "你敢保证这是成龙配的音？", file: "你敢保证这是成龙配的音？.mp4", desc: "你敢保证这是成龙配的音？(发布者：SMGYH)", duration: "3:23" },
@@ -26,15 +19,12 @@ const videoPlaylist = document.getElementById('videoPlaylist');
 
 // ===== 核心功能函数 =====
 
-/**
- * 初始化视频播放列表
- */
 function initializePlaylist() {
-    videoPlaylist.innerHTML = ''; // 清空占位符
+    videoPlaylist.innerHTML = '';
 
     videoList.forEach((video, index) => {
         const listItem = document.createElement('li');
-        listItem.dataset.index = index; // 存储索引
+        listItem.dataset.index = index;
 
         listItem.innerHTML = `
             <i class="fas fa-play-circle"></i>
@@ -45,68 +35,43 @@ function initializePlaylist() {
             </div>
         `;
 
-        // 点击列表项播放视频
         listItem.addEventListener('click', () => playVideo(index));
-
         videoPlaylist.appendChild(listItem);
     });
 
-    // 默认播放第一个视频
     if (videoList.length > 0) {
         playVideo(0);
     }
 }
 
-/**
- * 播放指定索引的视频
- * @param {number} index - 视频在列表中的索引
- */
 function playVideo(index) {
     const video = videoList[index];
-    const videoPath = `./videos/${video.file}`; // 视频文件路径
+    const videoPath = `./videos/${video.file}`;
 
-    // 更新播放器源
     videoPlayer.src = videoPath;
-
-    // 更新视频信息
     videoTitle.textContent = video.name;
     videoDescription.textContent = video.desc;
 
-    // 更新列表激活状态
     const allItems = document.querySelectorAll('#videoPlaylist li');
     allItems.forEach(item => item.classList.remove('active'));
     allItems[index].classList.add('active');
 
-    // 加载视频源
     videoPlayer.load();
-
-    // 尝试自动播放（注意浏览器策略可能阻止此行为）
     const playPromise = videoPlayer.play();
     if (playPromise !== undefined) {
         playPromise.catch(() => {
-            // 自动播放失败是正常情况
             console.log('自动播放被浏览器阻止，等待用户手动播放。');
         });
     }
 }
 
-/**
- * 初始化投稿链接（如果需要动态生成链接）
- */
 function initSubmissionLink() {
-    // 如果需要动态生成GitHub Issues链接，可以在这里处理
-    // 例如根据当前仓库信息动态生成链接
     const submissionLink = document.querySelector('.github-submit-btn');
     if (submissionLink) {
-        // 这里可以动态设置href，比如从当前页面URL提取仓库信息
-        // 目前使用静态链接，所以不需要修改
         console.log('投稿链接已初始化');
     }
 }
 
-/**
- * 初始化当前年份显示
- */
 function initCurrentYear() {
     const yearElement = document.getElementById('currentYear');
     if (yearElement) {
@@ -114,46 +79,80 @@ function initCurrentYear() {
     }
 }
 
+// ===== 新增：新年倒计时（农历春节） =====
+// 定义2026-2030年春节日期（公历）
+const springFestivals = [
+    { year: 2026, month: 2, day: 17 }, // 2026年春节
+    { year: 2027, month: 2, day: 6 },  // 2027年春节
+    { year: 2028, month: 1, day: 26 }, // 2028年春节
+    { year: 2029, month: 2, day: 13 }, // 2029年春节
+    { year: 2030, month: 2, day: 3 }   // 2030年春节
+];
+
+function getNextSpringFestival() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    
+    // 查找从当前年份开始的第一个未来的春节
+    for (let i = 0; i < springFestivals.length; i++) {
+        const sf = springFestivals[i];
+        if (sf.year < currentYear) continue;
+        
+        // 构建目标日期（当地时间的0点）
+        const targetDate = new Date(sf.year, sf.month - 1, sf.day, 0, 0, 0);
+        if (targetDate > now) {
+            return targetDate;
+        }
+    }
+    // 如果超出2030年，简单返回2030年春节（可扩展）
+    return new Date(2030, 1, 3, 0, 0, 0);
+}
+
+function updateCountdown() {
+    const targetDate = getNextSpringFestival();
+    const now = new Date();
+    const diff = targetDate - now; // 毫秒
+
+    if (diff <= 0) {
+        // 如果已过时，重新计算（例如刚刚过了一秒）
+        location.reload(); // 简单刷新页面重新获取
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (86400000)) / (3600000));
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('countdownDays').textContent = days.toString().padStart(2, '0');
+    document.getElementById('countdownHours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('countdownMinutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('countdownSeconds').textContent = seconds.toString().padStart(2, '0');
+}
+
 // ===== 播放器事件监听 =====
 
-// 视频开始播放时
 videoPlayer.addEventListener('play', function() {
     console.log(`视频开始播放: ${videoTitle.textContent}`);
 });
 
-// 视频播放结束时
 videoPlayer.addEventListener('ended', function() {
     const currentIndex = parseInt(document.querySelector('#videoPlaylist li.active')?.dataset.index || 0);
     const nextIndex = (currentIndex + 1) % videoList.length;
     console.log('当前视频播放完毕。你可以点击列表中的下一个视频继续。');
-    
-    // 可选：自动播放下一个视频（取消注释即可启用）
-    // playVideo(nextIndex);
 });
 
 // ===== 页面加载完成后初始化 =====
 document.addEventListener('DOMContentLoaded', function() {
     console.log('页面加载完成，开始初始化...');
     
-    // 初始化视频播放列表
     initializePlaylist();
-    
-    // 初始化投稿链接
     initSubmissionLink();
-    
-    // 初始化当前年份
     initCurrentYear();
+
+    // 启动倒计时
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
     
     console.log('初始化完成！');
 });
-
-// ===== 工具函数 =====
-
-/**
- * 获取视频文件名（不带扩展名）
- * @param {string} filename - 完整的文件名
- * @returns {string} 不带扩展名的文件名
- */
-function getFileNameWithoutExtension(filename) {
-    return filename.replace(/\.[^/.]+$/, "");
-}
