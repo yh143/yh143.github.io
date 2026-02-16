@@ -1,6 +1,6 @@
 /* ============================================
-   XiliXili 视频站 - 完整样式表
-   整合：基础框架、视频播放器、列表、直播、投稿
+   XiliXili 视频站 - 新春红主题
+   整合：基础框架、视频播放器、列表、直播、投稿、倒计时
    ============================================ */
 
 /* ===== 1. 基础重置与全局样式 ===== */
@@ -16,8 +16,8 @@ html {
 }
 
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e3e8f0 100%);
-    color: #333;
+    background: linear-gradient(135deg, #fef5f5 0%, #fde0e0 100%);
+    color: #5a2e2e;
     min-height: 100vh;
     padding: 20px;
     line-height: 1.6;
@@ -28,9 +28,9 @@ body {
 .container {
     max-width: 1280px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(255, 245, 245, 0.98);
     border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 60px rgba(180, 60, 60, 0.15);
     overflow: hidden;
     padding: 40px;
     position: relative;
@@ -39,9 +39,9 @@ body {
 /* ===== 3. 页头样式 ===== */
 header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     padding-bottom: 25px;
-    border-bottom: 2px solid #f0f2f5;
+    border-bottom: 2px solid #ffd6d6;
     position: relative;
 }
 
@@ -53,37 +53,87 @@ header::after {
     transform: translateX(-50%);
     width: 120px;
     height: 4px;
-    background: linear-gradient(to right, #ff6b6b, #3498db);
+    background: linear-gradient(to right, #e44d4d, #f39c12);
     border-radius: 2px;
 }
 
 header h1 {
-    color: #2c3e50;
+    color: #8b3a3a;
     font-size: 3.2rem;
     margin-bottom: 12px;
     font-weight: 800;
     letter-spacing: -0.5px;
-    background: linear-gradient(120deg, #2c3e50, #3498db);
+    background: linear-gradient(120deg, #b33131, #e44d4d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 header h1 i {
-    color: #ff6b6b;
+    color: #e44d4d;
     margin-right: 18px;
-    text-shadow: 0 4px 6px rgba(255, 107, 107, 0.2);
+    text-shadow: 0 4px 6px rgba(228, 77, 77, 0.3);
 }
 
 header p {
-    color: #7f8c8d;
+    color: #b15656;
     font-size: 1.25rem;
     max-width: 600px;
     margin: 0 auto;
     font-weight: 300;
 }
 
-/* ===== 4. 主内容区网格布局 ===== */
+/* ===== 4. 新年倒计时样式 ===== */
+.newyear-countdown {
+    background: linear-gradient(145deg, #c0392b, #e74c3c);
+    color: #fff8e7;
+    border-radius: 60px;
+    padding: 20px 30px;
+    margin: 20px 0 40px 0;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(192, 57, 43, 0.3);
+    border: 1px solid #f5b7b1;
+}
+
+.countdown-title {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.countdown-title i {
+    margin-right: 10px;
+    color: #fdebd0;
+}
+
+.countdown-timer {
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.countdown-timer span {
+    background: #922b21;
+    padding: 10px 18px;
+    border-radius: 30px;
+    margin: 0 5px;
+    display: inline-block;
+    min-width: 80px;
+    box-shadow: inset 0 -2px 0 #641e16;
+}
+
+@media (max-width: 768px) {
+    .countdown-timer {
+        font-size: 1.8rem;
+    }
+    .countdown-timer span {
+        padding: 6px 10px;
+        min-width: 60px;
+    }
+}
+
+/* ===== 5. 主内容区网格布局 ===== */
 main {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
@@ -107,23 +157,19 @@ main {
     }
 }
 
-/* ===== 5. 视频播放器区域 ===== */
+/* ===== 6. 视频播放器区域 ===== */
 .player-section {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: linear-gradient(145deg, #fff5f5, #ffe5e5);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(224, 230, 237, 0.8);
+    box-shadow: 0 10px 30px rgba(200, 60, 60, 0.05), inset 0 1px 0 #ffd9d9;
+    border: 1px solid #fccaca;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .player-section:hover {
     transform: translateY(-5px);
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    box-shadow: 0 15px 40px rgba(200, 60, 60, 0.1), inset 0 1px 0 #ffe0e0;
 }
 
 #mainVideoPlayer {
@@ -133,17 +179,17 @@ main {
     display: block;
     margin-bottom: 25px;
     max-height: 560px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(150, 40, 40, 0.25);
     transition: all 0.3s ease;
 }
 
 #mainVideoPlayer:focus {
-    outline: 3px solid rgba(52, 152, 219, 0.4);
+    outline: 3px solid rgba(228, 77, 77, 0.4);
     outline-offset: 2px;
 }
 
 .player-info h2 {
-    color: #2c3e50;
+    color: #8b3a3a;
     margin-bottom: 12px;
     font-size: 2rem;
     font-weight: 700;
@@ -151,24 +197,22 @@ main {
 }
 
 .player-info p {
-    color: #5a6c7d;
+    color: #b15656;
     font-size: 1.1rem;
     line-height: 1.5;
     padding: 12px 18px;
-    background: #f8fafd;
+    background: #ffe5e5;
     border-radius: 12px;
-    border-left: 5px solid #3498db;
+    border-left: 5px solid #e44d4d;
 }
 
-/* ===== 6. 视频列表区域 ===== */
+/* ===== 7. 视频列表区域 ===== */
 .playlist-section {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: linear-gradient(145deg, #fff5f5, #ffe5e5);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(224, 230, 237, 0.8);
+    box-shadow: 0 10px 30px rgba(200, 60, 60, 0.05), inset 0 1px 0 #ffd9d9;
+    border: 1px solid #fccaca;
     max-height: 700px;
     display: flex;
     flex-direction: column;
@@ -177,18 +221,18 @@ main {
 }
 
 .playlist-section h3 {
-    color: #2c3e50;
+    color: #8b3a3a;
     margin-bottom: 25px;
     font-size: 1.8rem;
     padding-bottom: 18px;
-    border-bottom: 2px solid #f0f2f5;
+    border-bottom: 2px solid #fccaca;
     font-weight: 700;
     display: flex;
     align-items: center;
 }
 
 .playlist-section h3 i {
-    color: #3498db;
+    color: #e44d4d;
     margin-right: 15px;
     font-size: 1.5rem;
 }
@@ -200,53 +244,52 @@ main {
     margin-bottom: 25px;
     padding-right: 15px;
     scrollbar-width: thin;
-    scrollbar-color: #c1c9d6 #f0f2f5;
+    scrollbar-color: #e4a3a3 #fccaca;
 }
 
-/* 视频列表滚动条样式 */
 #videoPlaylist::-webkit-scrollbar {
     width: 8px;
 }
 
 #videoPlaylist::-webkit-scrollbar-track {
-    background: #f0f2f5;
+    background: #fccaca;
     border-radius: 10px;
 }
 
 #videoPlaylist::-webkit-scrollbar-thumb {
-    background: #c1c9d6;
+    background: #e4a3a3;
     border-radius: 10px;
-    border: 2px solid #f0f2f5;
+    border: 2px solid #fccaca;
 }
 
 #videoPlaylist::-webkit-scrollbar-thumb:hover {
-    background: #a8b1c2;
+    background: #d18b8b;
 }
 
 #videoPlaylist .placeholder {
     text-align: center;
-    color: #95a5a6;
+    color: #b15656;
     padding: 40px 20px;
     font-style: italic;
     font-size: 1.1rem;
-    background: #f8fafd;
+    background: #ffe5e5;
     border-radius: 12px;
-    border: 2px dashed #dfe6ee;
+    border: 2px dashed #f5b2b2;
 }
 
 #videoPlaylist li {
     padding: 22px 25px;
     margin-bottom: 18px;
-    background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);
+    background: linear-gradient(135deg, #ffe5e5 0%, #fff2f2 100%);
     border-radius: 16px;
-    border-left: 6px solid #3498db;
+    border-left: 6px solid #e44d4d;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(224, 230, 237, 0.6);
+    border: 1px solid #f5b2b2;
 }
 
 #videoPlaylist li::before {
@@ -256,16 +299,16 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(52, 152, 219, 0.05), rgba(41, 128, 185, 0.02));
+    background: linear-gradient(90deg, rgba(228, 77, 77, 0.05), rgba(192, 57, 43, 0.02));
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 #videoPlaylist li:hover {
-    background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%);
+    background: linear-gradient(135deg, #fccaca 0%, #ffe5e5 100%);
     transform: translateX(8px) translateY(-3px);
-    border-left-color: #ff6b6b;
-    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.15);
+    border-left-color: #c0392b;
+    box-shadow: 0 10px 25px rgba(228, 77, 77, 0.2);
 }
 
 #videoPlaylist li:hover::before {
@@ -273,27 +316,27 @@ main {
 }
 
 #videoPlaylist li.active {
-    background: linear-gradient(135deg, #d6eaf8 0%, #ebf5fb 100%);
-    border-left-color: #2980b9;
-    border: 1px solid rgba(52, 152, 219, 0.3);
-    box-shadow: inset 0 2px 6px rgba(41, 128, 185, 0.1);
+    background: linear-gradient(135deg, #f5b2b2 0%, #ffcccc 100%);
+    border-left-color: #a93226;
+    border: 1px solid #e44d4d;
+    box-shadow: inset 0 2px 6px rgba(192, 57, 43, 0.15);
 }
 
 #videoPlaylist li i {
     margin-right: 20px;
-    color: #3498db;
+    color: #e44d4d;
     font-size: 1.5rem;
     position: relative;
     z-index: 1;
 }
 
 #videoPlaylist li.active i {
-    color: #2980b9;
+    color: #a93226;
 }
 
 .video-name {
     font-weight: 700;
-    color: #2c3e50;
+    color: #8b3a3a;
     margin-bottom: 8px;
     font-size: 1.15rem;
     position: relative;
@@ -302,8 +345,8 @@ main {
 
 .video-duration {
     font-size: 0.9rem;
-    color: #5a6c7d;
-    background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+    color: #b15656;
+    background: linear-gradient(135deg, #ffd9d9, #fccaca);
     padding: 6px 14px;
     border-radius: 20px;
     display: inline-flex;
@@ -316,19 +359,20 @@ main {
 .video-duration i {
     margin-right: 6px;
     font-size: 0.9rem;
+    color: #c0392b;
 }
 
 .hint {
-    background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%);
-    border-left: 5px solid #ffd54f;
+    background: linear-gradient(135deg, #fef5e7 0%, #fef9e7 100%);
+    border-left: 5px solid #f1c40f;
     padding: 20px;
     border-radius: 14px;
     margin-top: auto;
-    border: 1px solid rgba(255, 213, 79, 0.3);
+    border: 1px solid #f9e79f;
 }
 
 .hint p {
-    color: #5d4037;
+    color: #7d5d3a;
     font-size: 0.95rem;
     margin: 0;
     display: flex;
@@ -336,22 +380,20 @@ main {
 }
 
 .hint i {
-    color: #ff9800;
+    color: #f39c12;
     margin-right: 12px;
     font-size: 1.2rem;
     flex-shrink: 0;
 }
 
-/* ===== 7. B站直播嵌入区域 ===== */
+/* ===== 8. B站直播嵌入区域 ===== */
 .live-embed {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: linear-gradient(145deg, #fff5f5, #ffe5e5);
     border-radius: 20px;
     padding: 30px;
     margin: 40px 0;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(224, 230, 237, 0.8);
+    box-shadow: 0 10px 30px rgba(200, 60, 60, 0.05), inset 0 1px 0 #ffd9d9;
+    border: 1px solid #fccaca;
     grid-column: 1 / -1;
     text-align: center;
     position: relative;
@@ -365,7 +407,7 @@ main {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(to right, #fb7299, #ff9d3b, #fb7299);
+    background: linear-gradient(to right, #e44d4d, #f39c12, #e44d4d);
     background-size: 200% 100%;
     animation: live-gradient 3s ease infinite;
 }
@@ -377,24 +419,24 @@ main {
 }
 
 .live-embed h3 {
-    color: #2c3e50;
+    color: #8b3a3a;
     margin-bottom: 15px;
     font-size: 1.9rem;
     padding-bottom: 15px;
-    border-bottom: 2px solid #f0f2f5;
+    border-bottom: 2px solid #fccaca;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .live-embed h3 i {
-    color: #fb7299;
+    color: #e44d4d;
     margin-right: 15px;
     font-size: 1.7rem;
 }
 
 .live-embed > p {
-    color: #7f8c8d;
+    color: #b15656;
     margin-bottom: 25px;
     font-size: 1.1rem;
     max-width: 800px;
@@ -410,380 +452,26 @@ main {
     display: block;
     margin: 0 auto 20px;
     border-radius: 16px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 35px rgba(150, 40, 40, 0.2);
+    border: 1px solid #e4a3a3;
     transition: all 0.3s ease;
 }
 
 .live-embed iframe:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 40px rgba(150, 40, 40, 0.3);
 }
 
 .live-tip {
     font-size: 0.95rem;
-    color: #7f8c8d;
-    background: #f8fafd;
+    color: #b15656;
+    background: #ffe5e5;
     padding: 12px 20px;
     border-radius: 12px;
     display: inline-block;
-    border: 1px solid #e9edf3;
+    border: 1px solid #f5b2b2;
     margin-top: 10px;
 }
 
-/* ===== 8. GitHub Issues 投稿区域 ===== */
+/* ===== 9. GitHub Issues 投稿区域 ===== */
 .submit-section {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    border-radius: 20px;
-    padding: 35px;
-    margin-top: 30px;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.05),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(224, 230, 237, 0.8);
-    grid-column: 1 / -1;
-    position: relative;
-    overflow: hidden;
-}
-
-.submit-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(to right, #2ecc71, #3498db, #2ecc71);
-    background-size: 200% 100%;
-}
-
-.submit-section h3 {
-    color: #2c3e50;
-    margin-bottom: 18px;
-    font-size: 1.9rem;
-    padding-bottom: 18px;
-    border-bottom: 2px solid #f0f2f5;
-    display: flex;
-    align-items: center;
-}
-
-.submit-section h3 i {
-    color: #2ecc71;
-    margin-right: 15px;
-    font-size: 1.7rem;
-}
-
-.submit-section > p {
-    color: #7f8c8d;
-    margin-bottom: 28px;
-    font-size: 1.1rem;
-    max-width: 800px;
-    line-height: 1.5;
-}
-
-.github-submit-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #24292e 0%, #3a4249 100%);
-    color: white;
-    text-decoration: none;
-    padding: 20px 40px;
-    border-radius: 16px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    text-align: center;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 15px;
-    box-shadow: 0 8px 25px rgba(36, 41, 46, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.github-submit-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.7s ease;
-}
-
-.github-submit-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(36, 41, 46, 0.3);
-    background: linear-gradient(135deg, #3a4249 0%, #4a5560 100%);
-}
-
-.github-submit-btn:hover::before {
-    left: 100%;
-}
-
-.github-submit-btn:active {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(36, 41, 46, 0.25);
-}
-
-.github-submit-btn i {
-    margin-right: 15px;
-    font-size: 1.4rem;
-}
-
-.steps-guide {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-left: 6px solid #3498db;
-    padding: 25px;
-    border-radius: 16px;
-    margin-top: 30px;
-    border: 1px solid rgba(224, 230, 237, 0.8);
-}
-
-.steps-guide h4 {
-    color: #2c3e50;
-    margin-top: 0;
-    margin-bottom: 18px;
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-}
-
-.steps-guide h4 i {
-    color: #3498db;
-    margin-right: 12px;
-    font-size: 1.3rem;
-}
-
-.steps-guide ol {
-    margin: 0;
-    padding-left: 24px;
-    color: #5a6c7d;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-
-.steps-guide li {
-    margin-bottom: 12px;
-    padding-left: 8px;
-}
-
-.steps-guide li strong {
-    color: #2c3e50;
-    font-weight: 700;
-}
-
-.form-footer-note {
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-top: 25px;
-    line-height: 1.5;
-    padding: 18px;
-    background: #f8fafd;
-    border-radius: 14px;
-    border: 1px solid #e9edf3;
-}
-
-.form-footer-note a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: 600;
-    border-bottom: 1px dotted #3498db;
-    transition: all 0.2s ease;
-}
-
-.form-footer-note a:hover {
-    color: #2980b9;
-    border-bottom-style: solid;
-}
-
-.form-footer-note i {
-    margin-right: 10px;
-    color: #3498db;
-}
-
-/* ===== 9. 页脚样式 ===== */
-footer {
-    text-align: center;
-    color: #7f8c8d;
-    padding-top: 30px;
-    border-top: 2px solid #f0f2f5;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-top: 20px;
-}
-
-footer p {
-    margin-bottom: 8px;
-}
-
-footer a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    border-bottom: 1px dotted transparent;
-}
-
-footer a:hover {
-    color: #2980b9;
-    border-bottom-color: #2980b9;
-}
-
-/* ===== 10. 响应式设计优化 ===== */
-@media (max-width: 768px) {
-    body {
-        padding: 15px;
-    }
-    
-    .container {
-        padding: 25px;
-        border-radius: 20px;
-    }
-    
-    header h1 {
-        font-size: 2.2rem;
-    }
-    
-    header p {
-        font-size: 1.1rem;
-    }
-    
-    main {
-        gap: 35px;
-    }
-    
-    .player-section,
-    .playlist-section,
-    .live-embed,
-    .submit-section {
-        padding: 25px;
-        border-radius: 18px;
-    }
-    
-    .player-info h2 {
-        font-size: 1.7rem;
-    }
-    
-    .live-embed iframe {
-        height: 350px;
-    }
-    
-    .github-submit-btn {
-        padding: 18px 25px;
-        font-size: 1.15rem;
-    }
-    
-    .steps-guide {
-        padding: 20px;
-    }
-    
-    .playlist-section {
-        position: static; /* 取消 sticky 定位 */
-        max-height: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 20px;
-    }
-    
-    header h1 {
-        font-size: 1.9rem;
-    }
-    
-    .player-info h2 {
-        font-size: 1.5rem;
-    }
-    
-    .live-embed iframe {
-        height: 280px;
-    }
-    
-    .playlist-section h3,
-    .live-embed h3,
-    .submit-section h3 {
-        font-size: 1.6rem;
-    }
-}
-
-/* ===== 11. 工具类与动画 ===== */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.player-section,
-.playlist-section,
-.live-embed,
-.submit-section {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-.playlist-section { animation-delay: 0.1s; }
-.live-embed { animation-delay: 0.2s; }
-.submit-section { animation-delay: 0.3s; }
-
-/* 打印样式优化 */
-@media print {
-    .live-embed,
-    .submit-section,
-    .github-submit-btn,
-    .hint,
-    footer a {
-        display: none !important;
-    }
-    
-    body {
-        background: white !important;
-        color: black !important;
-    }
-    
-    .container {
-        box-shadow: none !important;
-        border: 1px solid #ddd !important;
-    }
-}
-/* 下载区域样式 */
-.download-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 15px;
-    padding: 30px;
-    margin: 30px 0;
-    text-align: center;
-    border-left: 5px solid #2ecc71;
-}
-.download-section h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-.download-btn {
-    display: inline-block;
-    background: linear-gradient(to right, #27ae60, #2ecc71);
-    color: white;
-    padding: 18px 40px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    border-radius: 12px;
-    text-decoration: none;
-    margin: 20px 0;
-    transition: all 0.3s;
-    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
-}
-.download-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(46, 204, 113, 0.5);
-}
-.download-tip {
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    margin-top: 15px;
-}
-.download-footer {
-    font-size: 0.9rem;
-    color: #95a5a6;
-    margin-top: 20px;
-}
+    background: lin
