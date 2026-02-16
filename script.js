@@ -5,6 +5,7 @@
 // desc: 视频描述
 // duration: 视频时长
 const videoList = [
+    { name: "骐骥驰骋 势不可挡！2026年总台春晚主题、主标识发布!", file: "34631912179-1-192.mp4", desc: "春晚预告片(发布者：SMGYH)", duration: "0:05" },
     { name: "It's Mario Time!", file: "first.mp4", desc: "尝尝SM64是什么味道的awa(发布者：SMGYH)", duration: "0:05" },
     { name: "小天才的恶行", file: "小天才的恶行.mp4", desc: "小天才的恶行(发布者：SMGYH)", duration: "1:36"},
     // 注意！以下两个视频文件名必须不同！
